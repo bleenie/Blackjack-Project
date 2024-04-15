@@ -1,4 +1,4 @@
-﻿namespace HelloWorld
+﻿namespace Blackjack
 {
     internal class Program
     {
