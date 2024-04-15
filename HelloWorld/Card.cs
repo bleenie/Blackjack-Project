@@ -3,31 +3,32 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Blackjack.Enums;
 
 namespace Blackjack
 {
     internal class Card
     {
-        int suit;
-        int rank;
-        int value;
+        Suits suit;
+        Ranks rank;
+        Values value;
 
         public Card(int value, int rank, int suit)
         {
-            this.value = value;
-            this.rank = rank;
-            this.suit = suit;
+            this.value = (Values)value;
+            this.rank = (Ranks)rank;
+            this.suit = (Suits)suit;
         }
 
-        public int getSuit() {
+        public Suits getSuit() {
             return suit;
         }
 
-        public int getRank() { 
+        public Ranks getRank() { 
             return rank;    
         }
 
-        public int getValue() {
+        public Values getValue() {
             return value;
         }
 
