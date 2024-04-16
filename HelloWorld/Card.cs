@@ -11,11 +11,11 @@ namespace Blackjack
     {
         Suits suit;
         Ranks rank;
-        Values value;
+        int value;
 
-        public Card(int value, int rank, int suit)
+        public Card(int suit, int rank, int value)
         {
-            this.value = (Values)value;
+            this.value = value;
             this.rank = (Ranks)rank;
             this.suit = (Suits)suit;
         }
@@ -28,9 +28,13 @@ namespace Blackjack
             return rank;    
         }
 
-        public Values getValue() {
+        public int getValue() {
             return value;
         }
 
+        public override string ToString()
+        {
+            return getRank() + " of " + getSuit(); 
+        }
     }
 }

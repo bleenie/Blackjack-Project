@@ -8,9 +8,9 @@ namespace Blackjack.Enums
 {
     internal enum Suits
     {
-        Heart = 1,
-        Diamond = 2,
-        Club = 3,
-        Spades = 4,
+        Hearts,
+        Diamonds,
+        Clubs ,
+        Spades,
     }
 }
