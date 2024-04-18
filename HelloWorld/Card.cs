@@ -34,7 +34,7 @@ namespace Blackjack
 
         public override string ToString()
         {
-            return getRank() + " of " + getSuit(); 
+            return getRank() + " of " + getSuit();
         }
     }
 }

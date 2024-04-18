@@ -36,20 +36,43 @@ namespace Blackjack
         public void shuffle()
         {
             cards = cards.OrderBy(x => Random.Shared.Next()).ToList();
+            Console.WriteLine("Deck shuffled!");
 
         }
 
-        public string drawCard()
+        public Card drawCard()
         {
             if (index >= 52)
             {
                 index = 0;
                 shuffle();
-                return "No cards remaining, reshuffling deck...";
+                noCards();
             }
             index++;
             int cardsIndex = index - 1;
-            return cards[cardsIndex].ToString();
+            return cards[cardsIndex];
         }
+
+        public string noCards()
+        {
+            return "No cards remaining, reshuffling deck...";
+        }
+
+        public void hitStand(bool hit, Hand hand)
+        {
+            if (hit == true)
+            {
+                hand.addCard(drawCard());
+               /* hand.logHand();
+                Console.WriteLine(hand.countHand());*/
+            }
+            else
+            {
+                Console.WriteLine("Stand!");
+                /*hand.logHand();
+                Console.WriteLine(hand.countHand());*/
+            }
+        }
+        
     }
 }
