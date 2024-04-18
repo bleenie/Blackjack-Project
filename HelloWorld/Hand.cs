@@ -40,6 +40,8 @@ namespace Blackjack
                 valueList.Add(cardValue);
             }
             handCount = valueList.Sum(Convert.ToInt32);
+            checkAceValue(valueList, bust(handCount));
+            handCount = valueList.Sum(Convert.ToInt32);
             return handCount;
         }
 
@@ -47,15 +49,27 @@ namespace Blackjack
         {
             if (handCount > 21)
             {
-                Console.WriteLine("Bust!");
                 return true;
             }
             return false;
         }
-
-        /*public bool blackjack()
+        /*Checks if there is an ace in hand. If yes, checks if standard ace value results in bust and changes value of card accordingly*/
+        public void checkAceValue(List<int> valueList, bool bust)
         {
-           
-        }*/
+            int aceIndex = valueList.IndexOf(11);
+            if (aceIndex >= 0 && bust == true)
+            {
+                valueList[aceIndex] = 1;
+            }
+        }
+
+        public bool blackjack(int handCount)
+        {
+            if (handCount == 21)
+            {
+                return true;
+            }
+            return false;
+        }
     }
 }

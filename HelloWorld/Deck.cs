@@ -10,13 +10,14 @@ namespace Blackjack
     internal class Deck
     {
         List<Card> cards;
-        int[] values = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10 };
+        int[] values = { 11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10 };
         int index;
 
         public Deck()
         {
             cards = new List<Card>(52);
             setUpDeck();
+            shuffle();
         }
 
         public void setUpDeck()
@@ -46,16 +47,11 @@ namespace Blackjack
             {
                 index = 0;
                 shuffle();
-                noCards();
+                Console.WriteLine("No cards remaining, reshuffling deck...");
             }
             index++;
             int cardsIndex = index - 1;
             return cards[cardsIndex];
-        }
-
-        public string noCards()
-        {
-            return "No cards remaining, reshuffling deck...";
         }
 
         public void hitStand(bool hit, Hand hand)

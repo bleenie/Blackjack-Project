@@ -15,7 +15,9 @@ namespace Blackjack
         Random random = new Random();
 
         public Player() {
-        
+            coins = 0;
+            name = "";
+            playerHand = new Hand();
         }
 
         public bool autoHitStand()
