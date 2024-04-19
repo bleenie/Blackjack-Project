@@ -11,13 +11,15 @@ namespace Blackjack
     {
         Suits suit;
         Ranks rank;
-        Values value;
+        int value;
+        bool faceUp;
 
-        public Card(int value, int rank, int suit)
+        public Card(int suit, int rank, int value)
         {
-            this.value = (Values)value;
+            this.value = value;
             this.rank = (Ranks)rank;
             this.suit = (Suits)suit;
+            faceUp = true;
         }
 
         public Suits getSuit() {
@@ -28,9 +30,30 @@ namespace Blackjack
             return rank;    
         }
 
-        public Values getValue() {
+        public int getValue() {
             return value;
         }
 
+        public override string ToString()
+        {
+            return getRank() + " of " + getSuit();
+        }
+
+        public bool isFaceUp()
+        { 
+            return faceUp; 
+        }
+
+        public void switchFaceDirection()
+        {
+            if (faceUp)
+            {
+                faceUp = false;
+            } 
+            else
+            {
+                faceUp = true;
+            }
+        }
     }
 }
