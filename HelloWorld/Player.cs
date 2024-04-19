@@ -11,13 +11,13 @@ namespace Blackjack
     {
         int coins;
         string name;
-        Hand playerHand;
+        Hand hand;
         Random random = new Random();
 
         public Player() {
             coins = 0;
             name = "";
-            playerHand = new Hand();
+            hand = new Hand();
         }
 
         public bool autoHitStand()
@@ -27,6 +27,15 @@ namespace Blackjack
             return randomBoolean;
         }
 
+        public void setHand()
+        {
+            hand = new Hand();
+        }
+
+        public Hand getHand()
+        {
+            return hand;
+        }
 
 
     }

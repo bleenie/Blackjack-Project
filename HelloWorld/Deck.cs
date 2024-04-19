@@ -46,8 +46,8 @@ namespace Blackjack
             if (index >= 52)
             {
                 index = 0;
-                shuffle();
                 Console.WriteLine("No cards remaining, reshuffling deck...");
+                shuffle();
             }
             index++;
             int cardsIndex = index - 1;

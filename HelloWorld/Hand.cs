@@ -25,9 +25,31 @@ namespace Blackjack
         {
             for (var i = 0; i < hand.Count; i++)
             {
-                Console.Write(hand[i] + "   ");
+                if (hand[i].isFaceUp())
+                { 
+                    Console.Write(hand[i] + "   ");
+                }
+                else
+                {
+                    Console.Write("??????   ");
+                }
             }
         }
+
+        public Card getFirstCard()
+        {
+            return hand[0];
+        }
+
+        public bool dealerCanCheck()
+        {
+            if (hand[1].getValue() == 11 || hand[1].getValue() == 10)
+            {
+                return true;
+            }
+            return false;
+        }
+
 
         public int countHand()
         {
@@ -53,6 +75,7 @@ namespace Blackjack
             }
             return false;
         }
+
         /*Checks if there is an ace in hand. If yes, checks if standard ace value results in bust and changes value of card accordingly*/
         public void checkAceValue(List<int> valueList, bool bust)
         {
@@ -63,6 +86,7 @@ namespace Blackjack
             }
         }
 
+        /*Checks if value of hand is 21. Only use this method when first two cards have been dealt*/
         public bool blackjack(int handCount)
         {
             if (handCount == 21)
