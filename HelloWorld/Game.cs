@@ -40,7 +40,7 @@ namespace Blackjack
                 Console.WriteLine("Total: " + hand.countHand());
                 if (hand.blackjack(hand.countHand()))
                 {
-                    Console.WriteLine("Blackjack! Player wins!");
+                    Console.WriteLine("Blackjack!");
                     playing = false;
                 }
             } else
@@ -58,7 +58,7 @@ namespace Blackjack
                     Console.WriteLine("Total: " + hand.countHand());
                     if (hand.blackjack(hand.countHand()))
                     {
-                        Console.WriteLine("Blackjack! Dealer wins!");
+                        Console.WriteLine("Blackjack!!");
                         playing = false;
                     }
                 }       
