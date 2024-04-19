@@ -14,5 +14,5 @@ Features:
 - Waarde van ace verandert als dit resulteert in een bust
 - Kaarten worden met elkaar vergeleken en het resultaat wordt laten zien
 
-Aan de applicatie ontbreken nog een aantal features zoals het inzetten van geld en de payouts. 
+Aan de applicatie ontbreken nog een aantal features zoals het inzetten van geld, payouts, en input/controle voor de dealer om het een leeromgeving te maken.
 Verder stopt het spel zodra er een Blackjack is in plaats van door te spelen om te kijken of de andere speler ook een Blackjack heeft.
