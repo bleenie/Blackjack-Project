@@ -59,14 +59,6 @@ namespace Blackjack
             if (hit == true)
             {
                 hand.addCard(drawCard());
-               /* hand.logHand();
-                Console.WriteLine(hand.countHand());*/
-            }
-            else
-            {
-                Console.WriteLine("Stand!");
-                /*hand.logHand();
-                Console.WriteLine(hand.countHand());*/
             }
         }
         

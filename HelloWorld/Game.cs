@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.Design;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -60,8 +61,24 @@ namespace Blackjack
                         Console.WriteLine("Blackjack! Dealer wins!");
                         playing = false;
                     }
-                }
-               
+                }       
+            }
+        }
+
+        public void compareHands(int dealerCount, int playerCount)
+        {
+            Console.WriteLine(" ");
+            Console.WriteLine("Dealer total: " + dealerCount + "   Player total: " + playerCount);
+            if (dealerCount > playerCount)
+            {
+                Console.WriteLine("Dealer wins!");
+            }
+            else if (dealerCount == playerCount)
+            {
+                Console.WriteLine("Tie!");
+            } else
+            {
+                Console.WriteLine("Player wins!");
             }
         }
 
@@ -70,35 +87,75 @@ namespace Blackjack
             while (playing == true)
             {
                 Console.WriteLine(" ");
-                Console.WriteLine("Player 1's cards:");
+                Console.WriteLine("Player's cards:");
                 firstCards(playerHand);
-                Console.WriteLine(" ");
-                Console.WriteLine("Dealer's cards:");
-                firstCards(dealerHand);
-                while (hitOrStand)
-                {
+                if (playing == true) 
+                { 
                     Console.WriteLine(" ");
-                    Console.WriteLine("Hit or stand?");
-                    bool choice = player.autoHitStand();
-                    deck.hitStand(choice, playerHand);
-                    if (choice)
+                    Console.WriteLine("Dealer's cards:");
+                    firstCards(dealerHand);
+                    if (playing == true)
                     {
-                        playerHand.logHand();
-                    }
-                    Console.WriteLine("Total: " + playerHand.countHand());
-                    if (choice == false)
-                    {
-                        hitOrStand = false;
-                    }
-                    else if (playerHand.bust(playerHand.countHand()) == true)
-                    {
-                        Console.WriteLine("Bust!");
-                        hitOrStand = false;
-                    }
-                    else if (playerHand.countHand() == 21)
-                    {
-                        Console.WriteLine("Reached max points! End of turn");
-                        hitOrStand = false;
+                        while (hitOrStand)
+                        {
+                            Console.WriteLine(" ");
+                            Console.WriteLine("Player's turn: Hit or stand?");
+                            bool choice = player.autoHitStand();
+                            deck.hitStand(choice, playerHand);
+                            if (choice)
+                            {
+                                Console.WriteLine("Hit!");
+                                playerHand.logHand();
+                                Console.WriteLine("Total: " + playerHand.countHand());
+                            }
+                            if (!choice)
+                            {
+                                Console.WriteLine("Stand!");
+                                hitOrStand = false;
+                            }
+                            else if (playerHand.bust(playerHand.countHand()) == true)
+                            {
+                                Console.WriteLine("Bust! Dealer wins!");
+                                hitOrStand = false;
+                                playing = false;
+                            }
+                            else if (playerHand.countHand() == 21)
+                            {
+                                Console.WriteLine("Reached max points! End of turn");
+                                hitOrStand = false;
+                            }
+                        }
+                        if (playing == true)
+                        {
+                            Console.WriteLine(" ");
+                            Console.WriteLine("Dealer's cards:");
+                            if (!dealerHand.dealerCanCheck())
+                            {
+                                dealerHand.getFirstCard().switchFaceDirection();
+                            }
+                            dealerHand.logHand();
+                            Console.WriteLine("Total: " + dealerHand.countHand());
+                            
+                            while (dealerHand.countHand() < 17)
+                            {
+                                Console.WriteLine(" ");
+                                Console.WriteLine("Dealer's turn: Hit or stand?");
+                                deck.hitStand(true, dealerHand);
+                                Console.WriteLine("Hit!");
+                                dealerHand.logHand();
+                                Console.WriteLine("Total: " + dealerHand.countHand());
+                            } 
+                            if (dealerHand.bust(dealerHand.countHand()))
+                            {
+                                Console.WriteLine("Bust! Player wins!");
+                            } else if (dealerHand.countHand() >= 17)
+                            {
+                                Console.WriteLine(" ");
+                                Console.WriteLine("Dealer's turn: Hit or stand?");
+                                Console.WriteLine("Stand!");
+                                compareHands(dealerHand.countHand(), playerHand.countHand());
+                            }
+                        }
                     }
 
                 }
